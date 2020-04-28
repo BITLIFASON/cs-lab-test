@@ -103,5 +103,4 @@ int main()
     assert(nibble_to_hex(0xc) == 'c');
     assert(nibble_to_hex(0xd) == 'd');
     assert(nibble_to_hex(0xe) == 'e');
-    calc(0xAA,'|',0xA5);
 }
