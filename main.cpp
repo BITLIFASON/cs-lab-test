@@ -62,6 +62,30 @@ void print_in_binary(const void* data, size_t size) {
     }
 }
 
+void calc(uint16_t op1, char oper, uint16_t op2){
+    print_in_hex (&op1, sizeof(op1));
+    cout << oper;
+    print_in_hex (&op2, sizeof(op2));
+    cout << "= ";
+    uint16_t rez;
+    if ( oper=='&'){
+        rez=op1&op2;
+    }
+    if ( oper=='|'){
+        rez=op1|op2;
+    }
+    if (oper == '^') {
+        rez = op1^op2;
+    }
+    print_in_hex (&rez, sizeof(rez));
+      cout << '\n';
+    print_in_binary (&op1, sizeof(op1));
+    cout << oper;
+    print_in_binary (&op2, sizeof(op2));
+    cout << "= ";
+    print_in_binary (&rez, sizeof(rez));
+}
+
 int main()
 {
     assert(nibble_to_hex(0x0) == '0');
@@ -79,4 +103,5 @@ int main()
     assert(nibble_to_hex(0xc) == 'c');
     assert(nibble_to_hex(0xd) == 'd');
     assert(nibble_to_hex(0xe) == 'e');
+    calc(0xAA,'|',0xA5);
 }
