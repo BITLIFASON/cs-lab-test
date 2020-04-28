@@ -33,6 +33,20 @@ void print_in_hex(const void* data, size_t size) {
     }
 }
 
+char bit_digit(uint8_t byte, uint8_t bit) {
+    if (byte & (0x1 << bit)) {
+        return '1';
+    }
+    return '0';
+}
+
+void print_in_binary(uint8_t byte) {
+    for (uint8_t bit = 7; bit > 0; bit--) {
+        cout << bit_digit(byte, bit);
+    }
+    cout << bit_digit(byte, 0);
+}
+
 int main()
 {
     assert(nibble_to_hex(0x0) == '0');
@@ -50,20 +64,4 @@ int main()
     assert(nibble_to_hex(0xc) == 'c');
     assert(nibble_to_hex(0xd) == 'd');
     assert(nibble_to_hex(0xe) == 'e');
-    uint32_t u8 = 0x42;
-    cout << "u8 bytes: ";
-    print_in_hex(&u8, sizeof(u8));
-    cout << '\n';
-
-    uint16_t u16 = 0x42;
-    cout << "u16 bytes: ";
-    print_in_hex(&u16, sizeof(u16));
-    cout << '\n';
-
-    uint32_t u32 = 0x42;
-    cout << "u32 bytes: ";
-    print_in_hex(&u32, sizeof(u32));
-    cout << '\n';
-
-
 }
